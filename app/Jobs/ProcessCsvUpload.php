@@ -50,7 +50,6 @@ class ProcessCsvUpload implements ShouldQueue
 
             // Update the status to 'completed'
             $this->upload->update(['status' => 'completed']);
-            // UploadStatusUpdated::dispatch('Processing complete', $this->upload->id);
         } catch (\Exception $e) {
             DB::rollBack();
             Log::error('CSV processing failed: ' . $e->getMessage());
